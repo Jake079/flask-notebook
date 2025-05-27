@@ -8,7 +8,7 @@ User registration & authentication + Password hashing.
 - Template rendering: **Jinja2** 
 - Auth & security: **Werkzeug**
 
-![web demo](Website/Static/img/demo.png)
+![web demo](website/static/img/demo.png)
 
 
 To run the app, first set up your secret key as environment variable: 
