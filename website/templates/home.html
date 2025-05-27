@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    My Notes
+{% endblock%}
+
+{% block content%}
+    <h1 class="page-note-title">Welcome back<br><span class="user-name">{{ user.user_name }}</span>&nbsp;<i class="fa-solid fa-mug-hot title_cup"></i></h1>
+    <br>
+    <h1 class="page-note-extra">It matters not how slow you go, as long as you don't stop.</h1>
+    <div class="notes">
+        <ul class="list-group note-group" id="notes">
+            {% for note in user.notes %}
+            <li class="list-group-item border-0 notelist"> 
+                {{ note.note_data }}
+                <br/>
+                <div class="time-edit">
+                    <form method="POST" action="/edit">
+                        <text class="date" name="note-date"><i class="fa-regular fa-clock fa-sm"></i>&nbsp;{{ note.formatted_time() }}</text>
+                        <input type="hidden" name="note-id" id="note-id" value="{{ note.id }}">
+                        <button class="btn edit-button"><i class="fa-solid fa-pen"></i></button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="add-note">
+            <form method="POST" class="sumbit">
+                <div class="add-note-textarea">
+                    <textarea name="note" class="input"></textarea>
+                </div>
+                <div class="submit-note">
+                    <button type="submit" class="btn btn-outline-info button-style-01"><i class="fa-solid fa-circle-plus"></i>&nbsp;Add Note</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <div class="bin-div">
+        {% if user.notes %}
+        <a name= "bin" class="btn btn-outline-danger toggle-bin-btn" href="/note-bin"><i class="fa-solid fa-caret-right"></i>&nbsp;<i class="fa-solid fa-trash-can fa-2xl bin-icon"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        {% else %}
+        {% endif %}
+    </div>
+{% endblock %}
