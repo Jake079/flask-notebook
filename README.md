@@ -1,4 +1,4 @@
-# Light-weight note-taking app using Flask
+# Notebook app with Flask
 
 Create, read, update, and delete notes. 
 User registration & authentication + Password hashing.
