@@ -12,7 +12,7 @@
         <ul class="list-group note-group" id="notes">
             {% for note in user.notes %}
             <li class="list-group-item border-0 notelist"> 
-                {{ note.note_data }}
+                {{ note.note_data.replace('\n', '<br>') | safe }}
                 <br/>
                 <div class="time-edit">
                     <form method="POST" action="/edit">
